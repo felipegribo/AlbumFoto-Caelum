@@ -1,0 +1,39 @@
+npm install @angular/cli --save
+ng new caelumpic
+npm install bootstrap --save
+ng server --open
+npm start
+ng generate component listagem
+
+App - Pasta para salvar os componentes
+Assests - Pasta para arquivos estaticos
+
+Web componentes
+    Unidade de software, um pequeno pedaço de tela funcional independente (mini aplicação, contendo html, css, JS, dados)
+
+Decorator é o fato de fazer meta dado em JS e inicia-se com @ e deve-se importar dependencia
+    @Component({
+        TemplateUrl : 'app.component.html' [Define qual o layout do componente],
+        Selector: 'app-root' [O Selector utilizado na pagina html (tag)]
+    })
+
+Class   
+    Por padrao as classes são privadas, para deixa-las publicas prefixa export na class
+
+Module apresenta os componentes para a aplicacao
+    Declarations um array de componentes 
+    Exports para exportar componentes
+
+Data-binding noe way
+    Associação de dados
+
+EndPoint
+    Saidas de dados da API
+
+one-way
+    Preenchimento do objto no momento da instacia
+
+two-way
+    Preenchimento do objeto em duas direções tanta na pagina html quanto component.ts
+    
+
