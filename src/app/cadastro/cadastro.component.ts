@@ -1,4 +1,4 @@
-import { Http, Headers } from '@angular/http';
+import { FotoService } from './../foto/foto.service';
 import { Component, OnInit } from '@angular/core';
 import { FotoComponent } from "../foto/foto.component";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
@@ -7,15 +7,15 @@ import { FormGroup, FormBuilder, Validators } from "@angular/forms";
   selector: 'app-cadastro',
   templateUrl: './cadastro.component.html'
 })
+
 export class CadastroComponent implements OnInit {
 
-  foto: FotoComponent = new FotoComponent()
-  http: Http  
+  foto: FotoComponent = new FotoComponent() 
   meuForm: FormGroup
+  servico: FotoService
 
-  constructor(conexaoApi: Http, fb: FormBuilder) {
-    this.http = conexaoApi
-    
+  constructor(service: FotoService, fb: FormBuilder) {    
+    this.servico = service
     this.meuForm = fb.group({
       titulo: ['',Validators.compose(
         [Validators.required, Validators.minLength(4)])],
@@ -25,13 +25,9 @@ export class CadastroComponent implements OnInit {
    }
 
   cadastrar(submit: Event){
+
     submit.preventDefault()
-
-    let cabecalho = new Headers()
-    cabecalho.append('COntent-Type','application/json')
-
-    this.http
-        .post('http://localhost:3000/v1/fotos',JSON.stringify(this.foto), {headers: cabecalho})
+    this.servico.salvar(this.foto)
         .subscribe(
           () => {
             console.log('Cadastrou')

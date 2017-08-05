@@ -2,8 +2,7 @@ import { Component, Input, OnInit } from "@angular/core";
 
 @Component({
     selector: 'painel',
-    templateUrl: './painel.component.html',
-    styleUrls:['']
+    templateUrl: './painel.component.html'
 })
 
 export class PainelComponent implements OnInit{
@@ -11,9 +10,8 @@ export class PainelComponent implements OnInit{
     tituloPainel: string = ''
 
     ngOnInit() {
-        this.tituloPainel = this.titulo
-        this.titulo.length > 7 
-        ? this.titulo = `${this.titulo.substr(0,7)} ... `
-        : this.tituloPainel = this.titulo
+        this.tituloPainel = this.titulo        
+        if(this.titulo.length > 7) 
+            this.titulo = `${this.titulo.substr(0,7)} ... `        
   }
 }
