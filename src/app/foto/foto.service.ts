@@ -27,12 +27,21 @@ export class FotoService {
         )
     }
 
-    editar(){
-
+    editar(foto: FotoComponent): Observable<Response>{
+        return this.http.put(
+                this.url + foto._id
+                ,JSON.stringify(foto)
+                ,{headers: this.cabecalho}
+        )
     }
 
     deletar(id: string): Observable<Response>{        
         return this.http.delete(this.url + id)
+    }
+
+    obterFoto(id: string): Observable<FotoComponent>{
+        return this.http.get(this.url + id)    
+                    .map(response => response.json())                        
     }
 
 }
